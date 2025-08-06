@@ -1,72 +1,145 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html><html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>MUST</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MUST - صنع الواقع</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
   <style>
-    body {
-      margin: 0;
-      background: radial-gradient(circle, #000000, #0a0a23);
-      font-family: 'Segoe UI', sans-serif;
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body {
+      width: 100%; height: 100%;
+      font-family: 'Orbitron', sans-serif;
+      background: black;
+      overflow: hidden;
       color: white;
-      text-align: center;
-      overflow: hidden;
-    }
-    .typing {
-      font-size: 1.6em;
-      font-weight: bold;
-      letter-spacing: 1px;
-      border-right: 2px solid #fff;
-      white-space: nowrap;
-      overflow: hidden;
-      width: 0;
-      animation: typing 4s steps(40, end) forwards;
-    }
-    @keyframes typing {
-      to {
-        width: 100%;
-      }
-    }
-    img {
-      width: 160px;
-      height: 160px;
-      border-radius: 50%;
-      margin-top: 20px;
-      border: 4px solid white;
-    }
-    .links {
-      margin-top: 20px;
-      font-size: 1.2em;
-    }
-    .links a {
-      color: #00ffcc;
-      text-decoration: none;
-      margin: 0 10px;
-      font-weight: bold;
-    }
-    .social-icons {
-      margin-top: 30px;
-      font-size: 20px;
-    }
-    .social-icons a {
-      margin: 0 8px;
-      color: #fff;
-    }
+    }body::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: url('https://i.imgur.com/zYVZkYz.gif') center/cover no-repeat;
+  opacity: 0.07;
+  z-index: -3;
+}
+
+.stars {
+  position: fixed;
+  width: 100%; height: 100%;
+  background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat;
+  animation: starAnim 200s linear infinite;
+  z-index: -2;
+}
+@keyframes starAnim {
+  0% { background-position: 0 0; }
+  100% { background-position: 10000px 10000px; }
+}
+
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.glow-text {
+  font-size: 2.5em;
+  font-weight: bold;
+  color: #00ffe7;
+  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px #00ffe7;
+  animation: flicker 3s infinite ease-in-out;
+}
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.7; }
+}
+
+.profile {
+  margin: 30px 0;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid #00ffe7;
+  box-shadow: 0 0 25px #00ffe7, 0 0 60px #00ffe7 inset;
+}
+.profile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.name {
+  font-size: 2em;
+  margin-top: 15px;
+  color: #ffffff;
+  text-shadow: 0 0 15px #00fff2;
+}
+.handle {
+  color: #bbb;
+  font-size: 1em;
+  margin-top: 5px;
+}
+
+.social {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+}
+.social a {
+  width: 55px;
+  height: 55px;
+  border-radius: 50%;
+  border: 3px solid #00ffe7;
+  color: #00ffe7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  text-decoration: none;
+  background: rgba(0, 255, 231, 0.05);
+  transition: all 0.4s ease;
+}
+.social a:hover {
+  background-color: #00ffe7;
+  color: #000;
+  transform: scale(1.2) rotate(5deg);
+  box-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7 inset;
+}
+
+footer {
+  position: absolute;
+  bottom: 15px;
+  width: 100%;
+  text-align: center;
+  font-size: 0.8em;
+  color: #888;
+}
+
   </style>
 </head>
 <body>
-  <h1 class="typing" style="animation-delay: 0s;">Create your own reality.</h1>
-  <h2 class="typing" style="animation-delay: 4s; animation-duration: 3s;">أصنع واقعك، لا تنتظره من أحد.</h2>
-  <img src="profile.jpg" alt="Profile Image"/>
-  <h3>MUST</h3>
-  <p>@_yl2c</p>
-  <div class="links">
-    <a href="tg://openmessage?user_id=6708812972">Telegram</a>
-  </div>
-  <div class="social-icons">
-    <a href="tg://openmessage?user_id=6708812972">📩</a>
-    <a href="https://instagram.com/_yl2c">📷</a>
-  </div>
+  <div class="stars"></div>
+  <div class="content">
+    <div class="glow-text">Create your own reality.</div>
+    <div class="glow-text" style="animation-delay: 2s;">أصنع واقعك، لا تنتظره من أحد.</div><div class="profile">
+  <img src="profile.jpg" alt="Profile">
+</div>
+
+<div class="name">MUST</div>
+<div class="handle">@_yl2c</div>
+
+<div class="social">
+  <a href="tg://openmessage?user_id=6708812972" title="Telegram" target="_blank">📩</a>
+  <a href="https://instagram.com/_yl2c" title="Instagram" target="_blank">📷</a>
+  <a href="https://t.me/_yl2c" title="قناتي على تليجرام" target="_blank">🚀</a>
+</div>
+
+  </div>  <footer>
+    &copy; 2025 MUST | جميع الحقوق محفوظة
+  </footer>
 </body>
 </html>
