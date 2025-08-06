@@ -1,145 +1,239 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>MUST - صنع الواقع</title>
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
     html, body {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       font-family: 'Orbitron', sans-serif;
-      background: black;
       overflow: hidden;
       color: white;
-    }body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: url('https://i.imgur.com/zYVZkYz.gif') center/cover no-repeat;
-  opacity: 0.07;
-  z-index: -3;
-}
+      background: black;
+    }
 
-.stars {
-  position: fixed;
-  width: 100%; height: 100%;
-  background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat;
-  animation: starAnim 200s linear infinite;
-  z-index: -2;
-}
-@keyframes starAnim {
-  0% { background-position: 0 0; }
-  100% { background-position: 10000px 10000px; }
-}
+    /* 🌌 خلفية فضائية متحركة (فيديو GIF خفيف) */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url('https://i.imgur.com/vxV5aGx.gif') center/cover no-repeat;
+      opacity: 0.25;
+      z-index: -3;
+    }
 
-.content {
-  position: relative;
-  z-index: 2;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  text-align: center;
-  padding: 20px;
-}
+    .stars {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/star.png') repeat;
+      animation: starAnim 200s linear infinite;
+      z-index: -2;
+      opacity: 0.2;
+    }
+    @keyframes starAnim {
+      0% { background-position: 0 0; }
+      100% { background-position: 10000px 10000px; }
+    }
 
-.glow-text {
-  font-size: 2.5em;
-  font-weight: bold;
-  color: #00ffe7;
-  text-shadow: 0 0 10px #00ffe7, 0 0 20px #00ffe7, 0 0 40px #00ffe7;
-  animation: flicker 3s infinite ease-in-out;
-}
-@keyframes flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.7; }
-}
+    .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+      padding: 20px;
+    }
 
-.profile {
-  margin: 30px 0;
-  width: 200px;
-  height: 200px;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 5px solid #00ffe7;
-  box-shadow: 0 0 25px #00ffe7, 0 0 60px #00ffe7 inset;
-}
-.profile img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+    /* 🎇 النص المتوهج المتدرج + يظهر تدريجيًا */
+    .glow-text {
+      font-size: 2.5em;
+      font-weight: bold;
+      background: linear-gradient(90deg, #00ffe7, #ff00e0, #00ffee);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: glowText 6s ease infinite, fadeIn 3s ease forwards;
+      opacity: 0;
+    }
 
-.name {
-  font-size: 2em;
-  margin-top: 15px;
-  color: #ffffff;
-  text-shadow: 0 0 15px #00fff2;
-}
-.handle {
-  color: #bbb;
-  font-size: 1em;
-  margin-top: 5px;
-}
+    .glow-text.delay {
+      animation-delay: 2s, 2s;
+    }
 
-.social {
-  display: flex;
-  gap: 30px;
-  margin-top: 40px;
-}
-.social a {
-  width: 55px;
-  height: 55px;
-  border-radius: 50%;
-  border: 3px solid #00ffe7;
-  color: #00ffe7;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.6em;
-  text-decoration: none;
-  background: rgba(0, 255, 231, 0.05);
-  transition: all 0.4s ease;
-}
-.social a:hover {
-  background-color: #00ffe7;
-  color: #000;
-  transform: scale(1.2) rotate(5deg);
-  box-shadow: 0 0 20px #00ffe7, 0 0 40px #00ffe7 inset;
-}
+    @keyframes glowText {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
 
-footer {
-  position: absolute;
-  bottom: 15px;
-  width: 100%;
-  text-align: center;
-  font-size: 0.8em;
-  color: #888;
-}
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
 
+    /* 🛸 صورة + هالات نيون متحركة */
+    .profile-container {
+      position: relative;
+      width: 220px;
+      height: 220px;
+      margin: 40px 0;
+    }
+
+    .profile {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin: auto;
+      z-index: 2;
+      border: 3px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 0 25px #00ffe7, 0 0 40px #ff00f2 inset;
+    }
+
+    .profile img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 50%;
+    }
+
+    .halo {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.25;
+      pointer-events: none;
+      background: conic-gradient(from 0deg, #00ffe7, #ff00f2, #00ffe7);
+      box-shadow: 0 0 40px rgba(255, 0, 242, 0.6), 0 0 60px rgba(0, 255, 231, 0.5);
+      animation: rotateHalo 10s linear infinite;
+    }
+
+    .halo-outer {
+      width: 240px;
+      height: 240px;
+      top: -20px;
+      left: -20px;
+      animation-duration: 14s;
+    }
+
+    .halo-inner {
+      width: 215px;
+      height: 215px;
+      top: -7.5px;
+      left: -7.5px;
+      animation-duration: 7s;
+      animation-direction: reverse;
+    }
+
+    @keyframes rotateHalo {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .name {
+      font-size: 2em;
+      margin-top: 15px;
+      color: #ffffff;
+      text-shadow: 0 0 15px #00fff2;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 4s;
+      opacity: 0;
+    }
+
+    .handle {
+      color: #bbb;
+      font-size: 1em;
+      margin-top: 5px;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 4.5s;
+      opacity: 0;
+    }
+
+    .social {
+      display: flex;
+      gap: 25px;
+      margin-top: 40px;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 5s;
+      opacity: 0;
+    }
+
+    .social a {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      border: 2px solid #00ffe7;
+      color: #00ffe7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4em;
+      text-decoration: none;
+      background: rgba(0, 255, 231, 0.05);
+      transition: all 0.4s ease;
+    }
+
+    .social a:hover {
+      background: #00ffe7;
+      color: #000;
+      transform: scale(1.2) rotate(5deg);
+      box-shadow: 0 0 25px #00ffe7, 0 0 50px #00ffe7 inset;
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8em;
+      color: #888;
+      animation: fadeIn 2s ease forwards;
+      animation-delay: 6s;
+      opacity: 0;
+    }
   </style>
 </head>
 <body>
+
   <div class="stars"></div>
+
   <div class="content">
     <div class="glow-text">Create your own reality.</div>
-    <div class="glow-text" style="animation-delay: 2s;">أصنع واقعك، لا تنتظره من أحد.</div><div class="profile">
-  <img src="profile.jpg" alt="Profile">
-</div>
+    <div class="glow-text delay">أصنع واقعك، لا تنتظره من أحد.</div>
 
-<div class="name">MUST</div>
-<div class="handle">@_yl2c</div>
+    <div class="profile-container">
+      <div class="halo halo-outer"></div>
+      <div class="halo halo-inner"></div>
+      <div class="profile">
+        <img src="profile.jpg" alt="Profile">
+      </div>
+    </div>
 
-<div class="social">
-  <a href="tg://openmessage?user_id=6708812972" title="Telegram" target="_blank">📩</a>
-  <a href="https://instagram.com/_yl2c" title="Instagram" target="_blank">📷</a>
-  <a href="https://t.me/_yl2c" title="قناتي على تليجرام" target="_blank">🚀</a>
-</div>
+    <div class="name">MUST</div>
+    <div class="handle">@iTsMuS_t</div>
 
-  </div>  <footer>
+    <div class="social">
+      <a href="https://t.me/iTsMuS_t" title="تليجرام" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://instagram.com/_yl2c" title="انستغرام" target="_blank"><i class="fab fa-instagram"></i></a>
+      <a href="https://t.me/iTsMuS_t" title="قناتي على تليجرام" target="_blank"><i class="fas fa-rocket"></i></a>
+    </div>
+  </div>
+
+  <footer>
     &copy; 2025 MUST | جميع الحقوق محفوظة
   </footer>
+
 </body>
 </html>
